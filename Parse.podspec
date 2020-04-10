@@ -21,7 +21,9 @@ Pod::Spec.new do |s|
     s.requires_arc = true
 
     s.source_files = 'Parse/Parse/*.{h,m}',
-                     'Parse/Parse/Internal/**/*.{h,m}'
+                     'Parse/Parse/Internal/**/*.{h,m}',
+                   'Parse/AppleUtils/*.{h,m}'
+
     s.public_header_files = 'Parse/Parse/*.h'
     s.private_header_files = 'Parse/Parse/Internal/**/*.h'
 

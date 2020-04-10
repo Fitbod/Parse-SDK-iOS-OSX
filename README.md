@@ -1,3 +1,6 @@
+# Fitbod Fork
+This is a custom fork of the Parse SDK repo that adds support for Sign in with Apple in the Fitbod iOS App.   Please see files under the AppleUtils directory.
+
 <p align="center">
     <img alt="Parse Platform" src="Assets/logo large.png" width="200">
   </a>
