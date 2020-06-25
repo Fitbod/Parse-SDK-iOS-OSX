@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'Parse'
-  s.version          = '1.17.3'
+  s.version          = '1.18.0'
   s.license          =  { :type => 'BSD', :file => 'LICENSE' }
   s.homepage         = 'http://parseplatform.org/'
   s.summary          = 'A library that gives you access to the powerful Parse cloud platform from your iOS/OS X/watchOS/tvOS app.'
@@ -82,7 +82,7 @@ Pod::Spec.new do |s|
 
     s.libraries        = 'z', 'sqlite3'
 
-    s.dependency 'Bolts/Tasks', '~> 1.9'
+    s.dependency 'Bolts/Tasks', '1.9.1'
   end
 
   s.subspec 'FacebookUtils' do |s|
@@ -105,8 +105,8 @@ Pod::Spec.new do |s|
     s.libraries        = 'z', 'sqlite3'
 
     s.dependency 'Parse/Core'
-    s.dependency 'Bolts/Tasks', '~> 1.9'
-    s.dependency 'FBSDKLoginKit', '~> 5.x'
+    s.dependency 'Bolts/Tasks', '~> 1.9.1'
+    s.dependency 'FBSDKLoginKit', '~> 6.x'
   end
 
   s.subspec 'FacebookUtils-tvOS' do |s|
@@ -127,9 +127,9 @@ Pod::Spec.new do |s|
     s.libraries        = 'z', 'sqlite3'
 
     s.dependency 'Parse/Core'
-    s.dependency 'Bolts/Tasks', '~> 1.9'
-    s.dependency 'FBSDKTVOSKit', '~> 5.x'
-    s.dependency 'FBSDKShareKit', '~> 5.x'
+    s.dependency 'Bolts/Tasks', '~> 1.9.1'
+    s.dependency 'FBSDKTVOSKit', '~> 6.x'
+    s.dependency 'FBSDKShareKit', '~> 6.x'
   end
 
   s.subspec 'TwitterUtils' do |s|
