@@ -26,7 +26,7 @@ Pod::Spec.new do |s|
 
     s.public_header_files = 'Parse/Parse/*.h',
                             'Parse/AppleUtils/*.h'
-                            
+
     s.private_header_files = 'Parse/Parse/Internal/**/*.h'
 
     s.ios.exclude_files = 'Parse/Parse/Internal/PFMemoryEventuallyQueue.{h,m}'
@@ -108,7 +108,7 @@ Pod::Spec.new do |s|
 
     s.dependency 'Parse/Core'
     s.dependency 'Bolts/Tasks', '~> 1.9.1'
-    s.dependency 'FBSDKLoginKit', '~> 6.x'
+    s.dependency 'FBSDKLoginKit'
   end
 
   s.subspec 'FacebookUtils-tvOS' do |s|
