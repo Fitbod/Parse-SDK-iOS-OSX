@@ -22,9 +22,11 @@ Pod::Spec.new do |s|
 
     s.source_files = 'Parse/Parse/*.{h,m}',
                      'Parse/Parse/Internal/**/*.{h,m}',
-                   'Parse/AppleUtils/*.{h,m}'
+                     'Parse/AppleUtils/*.{h,m}'
 
-    s.public_header_files = 'Parse/Parse/*.h'
+    s.public_header_files = 'Parse/Parse/*.h',
+                            'Parse/AppleUtils/*.h'
+                            
     s.private_header_files = 'Parse/Parse/Internal/**/*.h'
 
     s.ios.exclude_files = 'Parse/Parse/Internal/PFMemoryEventuallyQueue.{h,m}'
