@@ -25,6 +25,13 @@ NS_ASSUME_NONNULL_BEGIN
 extern NSString *const PFObjectDefaultPin;
 
 /**
+ Constants for handling isDataAvailable exceptions using NSNotificationCenter
+ */
+extern NSNotificationName const PFObjectIsDataAvailableExceptionNotification;
+extern NSString *const PFObjectIsDataAvailableExceptionKeyFailedKey;
+extern NSString *const PFObjectIsDataAvailableExceptionKeyFailedReason;
+
+/**
  The `PFObject` class is a local representation of data persisted to the Parse cloud.
  This is the main class that is used to interact with objects in your app.
  */
