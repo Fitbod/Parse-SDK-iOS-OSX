@@ -2142,6 +2142,15 @@ static void PFObjectAssertValueIsKindOfValidClass(id object) {
 
 - (id)objectForKey:(NSString *)key {
     @synchronized (lock) {
+        
+        // @dpan Custom logic to post a notification before the assert is shown so we can handle this scenario at the client level
+        if ([self isDataAvailableForKey:key] == false) {
+            NSString * reason = [NSString stringWithFormat:@"Key \"%@\" has no data.  Call fetchIfNeeded before getting its value.", key];
+            NSDictionary* userInfo = @{PFObjectIsDataAvailableExceptionKeyFailedKey: key,
+                                       PFObjectIsDataAvailableExceptionKeyFailedReason: reason
+            };
+            [[NSNotificationCenter defaultCenter] postNotificationName:PFObjectIsDataAvailableExceptionNotification object:self userInfo:userInfo];
+        }
         PFConsistencyAssert([self isDataAvailableForKey:key],
                             @"Key \"%@\" has no data.  Call fetchIfNeeded before getting its value.", key);
 

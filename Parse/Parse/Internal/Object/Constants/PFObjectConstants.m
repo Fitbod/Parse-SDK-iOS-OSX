@@ -20,3 +20,6 @@ NSString *const PFObjectClassNameRESTKey = @"className";
 NSString *const PFObjectACLRESTKey = @"ACL";
 
 NSString *const PFObjectDefaultPin = @"_default";
+NSNotificationName const PFObjectIsDataAvailableExceptionNotification = @"com.fitbod.PFObjectIsDataAvailableExceptionNotification";
+NSString *const PFObjectIsDataAvailableExceptionKeyFailedKey = @"com.fitbod.PFObjectIsDataAvailableExceptionKeyFailedKey";
+NSString *const PFObjectIsDataAvailableExceptionKeyFailedReason = @"com.fitbod.PFObjectIsDataAvailableExceptionKeyFailedReason";

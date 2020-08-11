@@ -21,3 +21,6 @@ extern NSString *const PFObjectClassNameRESTKey;
 extern NSString *const PFObjectACLRESTKey;
 
 extern NSString *const PFObjectDefaultPin;
+extern NSNotificationName const PFObjectIsDataAvailableExceptionNotification;
+extern NSString *const PFObjectIsDataAvailableExceptionKeyFailedKey;
+extern NSString *const PFObjectIsDataAvailableExceptionKeyFailedReason;
