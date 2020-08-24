@@ -542,3 +542,6 @@ extern NSString *const _Nonnull PFNetworkNotificationURLResponseBodyUserInfoKey;
 #  endif
 #endif
 
+
+extern NSNotificationName const PFOfflineStoreObjectIdUpdateAssertionNotification;
+extern NSString * const PFOfflineStoreObjectIdUpdateAssertionKeyFailureReason;

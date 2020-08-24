@@ -1019,6 +1019,10 @@ static int const PFOfflineStoreMaximumSQLVariablesCount = 999;
             return;
         }
 #endif
+        if([oldObjectId isEqualToString:newObjectId] == false) {
+            id userInfo = @{PFOfflineStoreObjectIdUpdateAssertionKeyFailureReason: @"objectIds cannot be changed in offline mode."};
+            [[NSNotificationCenter defaultCenter] postNotificationName:PFOfflineStoreObjectIdUpdateAssertionKeyFailureReason object:object userInfo:userInfo];
+        }
         PFConsistencyAssert([oldObjectId isEqualToString:newObjectId], @"objectIds cannot be changed in offline mode.");
         return;
     }

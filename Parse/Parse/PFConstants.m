@@ -31,3 +31,6 @@ NSString *const PFNetworkNotificationURLRequestUserInfoKey = @"PFNetworkNotifica
 NSString *const PFNetworkNotificationURLResponseUserInfoKey = @"PFNetworkNotificationURLResponseUserInfoKey";
 NSString *const PFNetworkNotificationURLResponseBodyUserInfoKey = @"PFNetworkNotificationURLResponseBodyUserInfoKey";
 NSString *const PFInvalidSessionTokenNotification = @"PFInvalidSessionTokenNotification";
+
+NSString * const PFOfflineStoreObjectIdUpdateAssertionNotification = @"PFOfflineStoreObjectIdUpdateAssertionNotification";
+NSString * const PFOfflineStoreObjectIdUpdateAssertionKeyFailureReason = @"PFOfflineStoreObjectIdUpdateAssertionKeyFailureReason";
