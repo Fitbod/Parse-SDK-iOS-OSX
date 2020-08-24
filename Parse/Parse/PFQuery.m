@@ -122,6 +122,10 @@ static void PFQueryAssertValidOrderingClauseClass(id object) {
     self.state.parseClassName = parseClassName;
 }
 
+- (BOOL)isFromLocalDataStore {
+    return self.state.queriesLocalDatastore;
+}
+
 #pragma mark Limit
 
 - (void)setLimit:(NSInteger)limit {

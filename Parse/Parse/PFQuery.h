@@ -769,6 +769,9 @@ typedef void (^PFQueryArrayResultBlock)(NSArray<PFGenericObject> *_Nullable obje
  */
 @property (nonatomic, assign) BOOL trace;
 
+
+@property (nonatomic, readonly) BOOL isFromLocalDataStore;
+
 @end
 
 NS_ASSUME_NONNULL_END
