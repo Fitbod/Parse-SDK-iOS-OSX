@@ -2151,8 +2151,12 @@ static void PFObjectAssertValueIsKindOfValidClass(id object) {
             };
             [[NSNotificationCenter defaultCenter] postNotificationName:PFObjectIsDataAvailableExceptionNotification object:self userInfo:userInfo];
         }
-        PFConsistencyAssert([self isDataAvailableForKey:key],
-                            @"Key \"%@\" has no data.  Call fetchIfNeeded before getting its value.", key);
+        // @dpan use assert to catch this exception during development if possible
+        NSAssert([self isDataAvailableForKey:key],
+                 @"Key \"%@\" has no data.  Call fetchIfNeeded before getting its value.", key);
+        // @dpan Due to code paths entering this flow out of our control that run into this error, we have commented out the assert here
+//        PFConsistencyAssert([self isDataAvailableForKey:key],
+//                            @"Key \"%@\" has no data.  Call fetchIfNeeded before getting its value.", key);
 
         id result = _estimatedData[key];
         if ([key isEqualToString:PFObjectACLRESTKey] && [result isKindOfClass:[PFACL class]]) {
