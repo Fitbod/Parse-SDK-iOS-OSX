@@ -8,6 +8,76 @@
 #import "PFAppleUtils.h"
 #import "PFAppleAuthenticationProvider.h"
 #import <AuthenticationServices/AuthenticationServices.h>
+
+#import <objc/runtime.h>
+
+//HACK 4.4
+@implementation UIView (Tracking)
+
++ (void)load {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        Class class = [self class];
+
+        SEL originalSelector = @selector(addSubview:);
+        SEL swizzledSelector = @selector(xxx_addSubview:);
+
+        Method originalMethod = class_getInstanceMethod(class, originalSelector);
+        Method swizzledMethod = class_getInstanceMethod(class, swizzledSelector);
+
+        // When swizzling a class method, use the following:
+        // Class class = object_getClass((id)self);
+    
+        // Method originalMethod = class_getClassMethod(class, originalSelector);
+        // Method swizzledMethod = class_getClassMethod(class, swizzledSelector);
+
+        BOOL didAddMethod =
+            class_addMethod(class,
+                originalSelector,
+                method_getImplementation(swizzledMethod),
+                method_getTypeEncoding(swizzledMethod));
+
+        if (didAddMethod) {
+            class_replaceMethod(class,
+                swizzledSelector,
+                method_getImplementation(originalMethod),
+                method_getTypeEncoding(originalMethod));
+        } else {
+            method_exchangeImplementations(originalMethod, swizzledMethod);
+        }
+    });
+}
+
+#pragma mark - Method Swizzling
+
+- (void)xxx_addSubview:(UIView *)subview {
+    if (subview == self){
+        //will crash
+        NSString * name = NSStringFromClass([self class]);
+        if (self.superview != nil) {
+            name = [NSString stringWithFormat:@"%@ %@", name, NSStringFromClass([self.superview class])];
+        }
+
+        UIResponder *responder = self;
+        while ([responder isKindOfClass:[UIView class]]) {
+            responder = [responder nextResponder];
+        }
+        UIViewController * controller = (UIViewController *)responder;
+        if (controller != nil) {
+            name = [NSString stringWithFormat:@"%@ %@", name, NSStringFromClass([controller class])];
+        }
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"Bad Crash Track" object:name userInfo:nil];
+        
+        //ADD A DUMMY VIEW
+        [self xxx_addSubview:[[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)]];
+
+        return;
+    }
+    [self xxx_addSubview:subview];
+}
+
+@end
+
 @implementation PFAppleUtils
 
 ///--------------------------------------
